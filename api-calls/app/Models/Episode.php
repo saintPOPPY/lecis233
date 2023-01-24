@@ -10,8 +10,4 @@ class Episode {
         $this->episode = $episode;
         $this->summary = $summary;
     }
-
-    // public function __toString() {
-    //     return "Name: $this->name";
-    // }
 }
