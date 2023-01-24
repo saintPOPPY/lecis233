@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\TvMazeAPI;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +16,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/episodes', function () {
+    //Read a showNumber query string variable, and if not, set default to 1
+    $showNumber = intval($request()->query('showNumber'));
+    $showNumber = $showNumber < 1 ? 1 : $showNumber
+
+    // --> interpolate number into api call to determine which show's episodes to display
+    $episodes = TvMazeAPI::fetch($showNumber);
+
+    //Make an api call to get show episodes
+    return view('episodes/index', ['episodes' => $episodes]);
 });
