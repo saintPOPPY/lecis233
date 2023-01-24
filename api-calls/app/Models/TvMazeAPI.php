@@ -8,13 +8,14 @@ use Illuminate\Support\Collection;
 //TvMazeAPI::fetch()
 class TvMazeAPI {
     public static function fetch($showNumber) {
-        $episodesData = Http::get("https://www.tvmaze.com/api#show-episode-list")->json();
+        $episodesData = Http::get("https://api.tvmaze.com/shows/$showNumber/episodes")->json();
 
-        
+        //Laravel collection
         $episodesCollection = collect($episodesData);
 
-        return $episodesCollection->map(function($episode){
-            return new Episode($episode['name'], $episode['image']['medium'], $episode['season'], $episode['episode'], $episode['summary'])
+        //Map over, converting each data point within this json into an Episode object
+        return $episodesCollection->map(function($show){
+            return new Episode($show['name'], $show['image']['medium'], $show['season'], $show['number'], $show['summary']);
         });
     }
 }

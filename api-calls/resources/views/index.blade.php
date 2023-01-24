@@ -8,10 +8,20 @@
 </head>
 <body>
     <h1>Episodes</h1>
-    <ul>
-    @foreach ($episodes as $episode)
-        <li>{{$episode}}</li>
+    <div class="card-group">
+    @foreach ($episodes as $show)
+        <div class="card">
+            <img class="card-img-top" src="{{ $show->image }}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{ $show->name }}</h5>
+                <p class="card-text">{{ $show->summary }}</p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">Season {{ $show->season }}, Episode {{ $show->episode }}</small>
+            </div>
+        </div>
+
     @endforeach
-    </ul>
+    
 </body>
 </html>

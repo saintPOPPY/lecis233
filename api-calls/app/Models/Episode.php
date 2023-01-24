@@ -11,7 +11,7 @@ class Episode {
         $this->summary = $summary;
     }
 
-    public function __toString() {
-        return "Name: $this->name";
-    }
+    // public function __toString() {
+    //     return "Name: $this->name";
+    // }
 }
