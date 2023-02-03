@@ -41,5 +41,5 @@ Route::get('/view-episodes', function () {
     $episodes = Episode::where('show_Number', $showNumber)->get();
 
     // Pass the $episodes to the view, make an API call to get show episodes
-    return view('episodes/index', ['episodes' => $episodes]);
+    return view('index', ['episodes' => $episodes]);
 });
