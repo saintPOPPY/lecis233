@@ -19,22 +19,27 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/episodes', function () {
+// Updated from '/episodes to /load-episodes
+Route::get('/load-episodes', function () {
     //Read a showNumber query string variable
     $showNumber = intval(request()->query('showNumber'));
     //, and if not, set default to 1
-    $showNumber = $showNumber < 1 ? 10 : $showNumber;
+    $showNumber = $showNumber < 1 ? 1 : $showNumber;
 
     // --> interpolate number into api call to determine which show's episodes to display
     $episodes = TvMazeAPI::fetch($showNumber);
-    //Make an api call to get show episodes
+    //Make an API call to get show episodes
     return view('index', ['episodes' => $episodes]);
 });
 
+// New route connecting to the Model class
 Route::get('/view-episodes', function () {
-    $showNumber = intval(request()->query('showNumber'));
-    $showNumber = $showNumber < 1 ? 10 : $showNumber;
+    $showNumber = intval(request()->query('showNumber'));           // read a showNumber query string 
+    $showNumber = $showNumber < 1 ? 1 : $showNumber;                // if not, set to 1 (as above)
+
+    // Eloquent Model database, where 'show_Number' is equal to $showNumber
     $episodes = Episode::where('show_Number', $showNumber)->get();
 
+    // Pass the $episodes to the view, make an API call to get show episodes
     return view('episodes/index', ['episodes' => $episodes]);
 });
