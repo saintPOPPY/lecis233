@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('episodes', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('image');
+            $table->integer('season');
+            $table->integer('episode');
+            $table->text('summary');
+            $table->integer('show_number');
             $table->timestamps();
         });
     }
