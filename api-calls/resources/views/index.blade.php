@@ -9,6 +9,11 @@
 <body>
     <h1>Episodes</h1>
     <div class="card-group">
+    @if (count($episodes) == 0)
+        <div class="card">
+            <h1>There are no episodes to show at this time!</h1>
+
+    @else 
     @foreach ($episodes as $show)
         <div class="card">
             <img class="card-img-top" src="{{ $show->image }}" alt="Card image cap">
@@ -20,8 +25,8 @@
                 <small class="text-muted">Season {{ $show->season }}, Episode {{ $show->episode }}</small>
             </div>
         </div>
-
-    @endforeach
+    @endforeach    
+    @endif
     
 </body>
 </html>

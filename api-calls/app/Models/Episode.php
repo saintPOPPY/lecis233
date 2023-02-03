@@ -2,12 +2,17 @@
 
 namespace App\Models;
 
-class Episode {
-    public function __construct($name, $image, $season, $episode, $summary) {
-        $this->name = $name;
-        $this->image = $image;
-        $this->season = $season;
-        $this->episode = $episode;
-        $this->summary = $summary;
-    }
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Episode extends Model
+{
+    protected $fillable = [
+        'name',
+        'image',
+        'season',
+        'episode',
+        'show_number',
+        'summary'
+    ];
 }
