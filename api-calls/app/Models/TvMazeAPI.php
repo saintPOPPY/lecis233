@@ -6,16 +6,21 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Collection;
 
 //TvMazeAPI::fetch()
-class TvMazeAPI {
-    public static function fetch($showNumber) {
+class TvMazeAPI
+{
+    public static function fetch($showNumber)
+    {
+
         $episodesData = Http::get("https://api.tvmaze.com/shows/$showNumber/episodes")->json();
 
-        //Laravel collection
-        $episodesCollection = collect($episodesData);
+        $episodeCollection = collect($episodesData);
 
-        //Map over, converting each data point within this json into an Episode object
-        return $episodesCollection->map(function($show){
-            return new Episode($show['name'], $show['image']['medium'], $show['season'], $show['number'], $show['summary']);
-        });
+        // return $episodeCollections->map(function ($show) {
+        return $episodeCollection->map(function ($show) use ($showNumber) {
+            $image = isset($show['image']['medium']) ? $show['image']['medium'] : "";
+
+            return Episode::firstOrCreate(['name' => $show['name'], 'image' => $image, 'season' => $show['season'], 'episode' => $show['number'], 'show_number' => $showNumber, 'summary' => strip_tags($show['summary'])]);
+        }, $episodeCollection);
+        // }
     }
-}
+};
