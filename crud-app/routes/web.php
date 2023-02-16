@@ -19,4 +19,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('friends', FriendController::class);
+Route::resource('products', ProductController::class);
