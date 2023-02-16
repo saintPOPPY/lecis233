@@ -6,6 +6,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
+use \App\Models\Product;
+
 class ProductController extends Controller
 {
     /**
@@ -15,8 +17,8 @@ class ProductController extends Controller
      */
     public function index(): Response
     {
-        $products = \App\Models\Product::all();
-        return view('products.index', ['products' => $products]);
+        $products = Product::all();
+        return response(view('products.index', ['products' => $products]));
     }
 
     /**
@@ -37,14 +39,22 @@ class ProductController extends Controller
 
     /**
      * Display the specified resource.
+     * 
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     * 
      */
     public function show(string $id): Response
     {
-        //
+        $product = Product::find($id);
+        return response(view('products.show', ['product' => $product]));
     }
 
     /**
      * Show the form for editing the specified resource.
+     * 
+     * @param int $id
+     * @return \Illuminate\Http\Response
      */
     public function edit(string $id): Response
     {
