@@ -18,6 +18,7 @@
       <td>{{$product->price}}</td>
       <td>{{$product->item_number}}</td>
       <td><a href="{{ route('product.show', $product->id) }}">Show Detail</a></td>
+      <td><a href="{{ route('product.edit', $product->id) }}">Edit Detail</a></td>
     </tr>
     @endforeach
   </tbody>

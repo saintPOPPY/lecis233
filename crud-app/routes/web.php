@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\ProductController; 
+namespace App\Http\Controllers; 
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +20,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Route is now handled by a controller
 Route::resource('products', ProductController::class);
