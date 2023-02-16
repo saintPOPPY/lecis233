@@ -5,6 +5,7 @@
 <table class="table table-striped">
   <thead>
     <tr>
+      <th></th>
       <th scope="col">Name</th>
       <th scope="col">Price</th>
       <th scope="col">Item Number</th>
@@ -14,6 +15,7 @@
   <tbody>
     @foreach ($products as $product)
     <tr>
+      <td>{{$product->image}}</td>
       <td>{{$product->name}}</td>
       <td>{{$product->price}}</td>
       <td>{{$product->item_number}}</td>

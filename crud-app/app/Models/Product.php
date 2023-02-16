@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    use HasFactory;
+
+    // Special property built into Laravel which allows mass assignment
     protected $fillable = [
         'name',
         'price',
