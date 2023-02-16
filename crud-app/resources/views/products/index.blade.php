@@ -1,6 +1,25 @@
-<h1>Products</h1>
-<ul>
+@extends('layout')
+
+@section('content')
+<h3>Products</h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Item Number</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
     @foreach ($products as $product)
-    <li>{{$product->name}}</li>
+    <tr>
+      <td>{{$product->name}}</td>
+      <td>{{$product->price}}</td>
+      <td>{{$product->item_number}}</td>
+      <td><a href="{{ route('product.show', $product->id) }}">Show Detail</a></td>
+    </tr>
     @endforeach
-</ul>
+  </tbody>
+</table>
+@endsection
