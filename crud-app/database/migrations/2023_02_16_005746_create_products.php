@@ -17,7 +17,7 @@ return new class extends Migration
             $table->decimal('price');
             $table->string('description');
             $table->integer('item_number');
-            $table->string(faker.image.imageUrl);
+            $table->string('');
             $table->timestamps();
         });
     }
