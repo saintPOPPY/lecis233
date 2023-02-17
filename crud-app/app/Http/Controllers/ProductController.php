@@ -82,7 +82,17 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id): RedirectResponse
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'price' => 'decimal:2|required',
+            'description' => 'required',
+            'item_number' => 'integer|required',
+            'image' => 'required',
+        ]);
+
+        Product::find($id)->update($validatedData);
+
+        return redirect()->route('products.index')->with('success', 'Product was updated successfully');
     }
 
     /**
