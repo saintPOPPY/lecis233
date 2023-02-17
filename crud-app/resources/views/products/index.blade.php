@@ -16,7 +16,6 @@
   <table class="table table-striped mb-5">
     <thead>
       <tr class="table-success">
-        <th scope="col">#</th>
         <th scope="col">Product Name</th>
         <th scope="col">Price</th>
         <th scope="col justify-content-center">Item Number</th>
@@ -29,7 +28,6 @@
     <tbody>
       @foreach($products as $product)
       <tr>
-        <th scope="row">{{ $product->id }}</th>
         <td>{{ $product->name }}</td>
         <td>${{ $product->price }}</td>
         <td>{{ $product->item_number }}</td>
