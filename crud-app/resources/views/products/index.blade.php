@@ -36,6 +36,8 @@
         <td><img src="{{$product->image}}" alt="{{$product->image}}" class="img-thumbnail"></td>
         <td><a href="{{route('products.show', $product->id)}}">Show Detail</a></td>
         <td><a class=bootstrap class href="{{route('products.edit', $product->id)}}">Edit</a></td>
+        
+        {{-- Destroy Form... --}}
         <td>
           <form action="{{route('products.destroy', $product->id)}}" method="POST" onSubmit="return confirm('Are you sure you want to delete?');">
             @csrf
@@ -43,6 +45,8 @@
             <button class="btn btn-error" type="submit">Delete</button>
           </form>
         </td>
+        {{-- ... end of Destroy Form --}}
+
       </tr>
       @endforeach
     </tbody>

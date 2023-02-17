@@ -10,11 +10,15 @@
 <body>
     <div class="container">
         <h1>Products App</h1>
+
+        {{-- Successful Creation Message --}}
         @if(session()->get('success'))
         <div class="toast toast-success">
             {{session()->get('success')}}
         </div>
         @endif
+
+        {{-- Content inserts here --}}
         <div class ="mt-1">
             @yield('content')
         </div>
