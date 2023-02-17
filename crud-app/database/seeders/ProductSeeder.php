@@ -13,16 +13,13 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
-        // delete all products
-            // data is typically pre-manipulated, and we should start from scratch
-        // iterate N times to create that many products
-        // create a product with random data
-
+        // delete all products to ensure new seeding is desired result
         \App\Models\Product::query()->delete();
 
         // Create a Faker instance to generate spoof data for testing our application
         $faker = \Faker\Factory::create();
-
+        
+        // iterate `N` times to create `N` many products
         // Utilize the Faker instance and Faker methods to generate specified data
         foreach(range(1,60) as $number) {
             \App\Models\Product::create([
