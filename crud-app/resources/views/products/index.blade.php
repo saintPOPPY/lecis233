@@ -9,7 +9,7 @@
     {{ $products->links() }}
   </div>
 
-  <table class="table table-bordered mb-5">
+  <table class="table table-striped mb-5">
     <thead>
       <tr class="table-success">
         <th scope="col">#</th>
@@ -27,7 +27,7 @@
       <tr>
         <th scope="row">{{ $product->id }}</th>
         <td>{{ $product->name }}</td>
-        <td>{{ $product->price }}</td>
+        <td>${{ $product->price }}</td>
         <td>{{ $product->item_number }}</td>
         <td><img src="{{$product->image}}" alt="{{$product->image}}" class="img-thumbnail"></td>
         <td><a href="{{route('products.show', $product->id)}}">Show Detail</a></td>
