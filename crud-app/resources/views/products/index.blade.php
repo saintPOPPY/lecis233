@@ -3,8 +3,11 @@
 @section('content')
 
 <div class="container mt-3">
+
+  {{-- Create Button Link --}}
   <a class="btn btn-primary" href="{{route('products.create')}}">Create Product</a>
 
+  {{-- Paginated Links (Top) --}}
   <div class="d-flex justify-content-center">
     {{ $products->links() }}
   </div>
@@ -13,9 +16,9 @@
     <thead>
       <tr class="table-success">
         <th scope="col">#</th>
-        <th scope="col">Product name</th>
+        <th scope="col">Product Name</th>
         <th scope="col">Price</th>
-        <th scope="col">Item Number</th>
+        <th scope="col justify-content-center">Item Number</th>
         <th scope="col">Image</th>
         <th></th>
         <th></th>
@@ -44,6 +47,7 @@
     </tbody>
   </table>
   
+  {{-- Paginated Links (Bot) --}}
   <div class="d-flex justify-content-center">
     {{ $products->links() }}
   </div>
