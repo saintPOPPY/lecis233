@@ -40,7 +40,6 @@ class ProductController extends Controller
     public function store(Request $request): RedirectResponse
     {
         Product::create($this->validateData($request));
-
         return redirect()->route('products.index')->with('success', 'Product was created successfully');
     }
 
@@ -53,7 +52,7 @@ class ProductController extends Controller
      */
     public function show(string $id): Response
     {
-        $product = Product::find($id);
+        $product = Product::findOrFail($id);
         return response(view('products.show', ['product' => $product]));
     }
 
@@ -65,7 +64,7 @@ class ProductController extends Controller
      */
     public function edit(string $id): Response
     {
-        $product = Product::find($id);
+        $product = Product::findOrFail($id);
         return response(view('products.edit', ['product' => $product]));
     }
 
@@ -75,7 +74,6 @@ class ProductController extends Controller
     public function update(Request $request, string $id): RedirectResponse
     {
         Product::find($id)->update($this->validateData($request));
-
         return redirect()->route('products.index')->with('success', 'Product was updated successfully');
     }
 
@@ -84,7 +82,7 @@ class ProductController extends Controller
      */
     public function destroy(string $id): RedirectResponse
     {
-        $product = Product::find($id);
+        $product = Product::findOrFail($id);
         $product->delete();
 
         return redirect()->route('products.index')->with('success', 'Product was deleted');
