@@ -26,15 +26,20 @@ class ProductController extends Controller
      */
     public function create(): Response
     {
-        //
+        $product = new Product;
+        return response(view('products.create', ['product' => $product]));
     }
 
     /**
      * Store a newly created resource in storage.
+     * 
+     * @param \Illuminate\Http\Request
+     * @return \Illuminate\Http\Response 
+     * 
      */
     public function store(Request $request): RedirectResponse
     {
-        //
+        Product::create($this->validateData($request));
     }
 
     /**

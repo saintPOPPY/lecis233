@@ -24,7 +24,7 @@ class ProductSeeder extends Seeder
         foreach(range(1,60) as $number) {
             \App\Models\Product::create([
                 'name' => $faker->word,
-                'price' => $faker->numberBetween(1,100),
+                'price' => $faker->randomFloat(2,0,1000),
                 'description' => $faker->sentence(),
                 'item_number' => $faker->unique()->numberBetween(1,60),
                 'image' => $faker->imageUrl,
