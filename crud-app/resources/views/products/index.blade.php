@@ -12,6 +12,7 @@
     {{ $products->links() }}
   </div>
 
+  {{-- Data Table (Seeded) --}}
   <table class="table table-striped mb-5">
     <thead>
       <tr class="table-success">

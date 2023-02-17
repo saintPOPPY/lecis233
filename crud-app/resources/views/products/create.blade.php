@@ -4,8 +4,16 @@
 <div class="column col-3">
     <h3>Create a new Product</h3>
 
-    <form method="POST" action="{{route('products.store')}}">
+    {{-- Display error messages if they exist --}}
+    @if ($errors->any())
+    <div class="toast toast-error">
+        @foreach ($errors->all() as $error)
+            <span>{{$error}}</span><br />
+        @endforeach
+    </div>
+    @endif
 
+    <form method="POST" action="{{route('products.store')}}">
         {{-- Data-entry Fields --}}
         <div class="form-group">
             <label class="form-label" for="name">Name</label>
@@ -26,8 +34,6 @@
             <button type="submit" class="btn btn-primary">Store Product</button>
             <a href="{{route('products.index')}}">Cancel</a>
         </div>
-
     </form>
-
 </div>
 @endsection
