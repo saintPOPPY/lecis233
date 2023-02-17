@@ -39,7 +39,17 @@ class ProductController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        Product::create($this->validateData($request));
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'price' => 'required',
+            'description' => 'required',
+            'item_number' => 'integer|required',
+            'image' => 'required',
+        ]);
+
+        Product::create($validatedData);
+
+        return redirect()->route('products.index')->with('success', 'Product was created successfully');
     }
 
     /**
