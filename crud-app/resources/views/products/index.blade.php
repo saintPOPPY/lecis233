@@ -20,9 +20,9 @@
         <th scope="col">Price</th>
         <th scope="col justify-content-center">Item Number</th>
         <th scope="col">Image</th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <th>{{-- Show Detail --}}</th>
+        <th>{{-- Edit Detail --}}</th>
+        <th>{{-- Delete --}}</th>
       </tr>
     </thead>
     <tbody>
