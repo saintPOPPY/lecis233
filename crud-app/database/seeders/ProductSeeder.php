@@ -19,13 +19,12 @@ class ProductSeeder extends Seeder
         // Create a Faker instance to generate spoof data for testing our application
         $faker = \Faker\Factory::create();
         
-        // iterate `N` times to create `N` many products
         // Utilize the Faker instance and Faker methods to generate specified data
         foreach(range(1,60) as $number) {
             \App\Models\Product::create([
                 'name' => $faker->word,
                 'price' => $faker->randomFloat(2,0,1000),
-                'description' => $faker->sentence(),
+                'description' => $faker->text(),
                 'item_number' => $faker->unique()->numberBetween(1,60),
                 'image' => $faker->imageUrl,
             ]);
