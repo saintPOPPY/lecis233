@@ -39,15 +39,7 @@ class ProductController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $validatedData = $request->validate([
-            'name' => 'required',
-            'price' => 'decimal:2|required',
-            'description' => 'required',
-            'item_number' => 'integer|required',
-            'image' => 'required',
-        ]);
-
-        Product::create($validatedData);
+        Product::create($this->validateData($request));
 
         return redirect()->route('products.index')->with('success', 'Product was created successfully');
     }
@@ -82,15 +74,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id): RedirectResponse
     {
-        $validatedData = $request->validate([
-            'name' => 'required',
-            'price' => 'decimal:2|required',
-            'description' => 'required',
-            'item_number' => 'integer|required',
-            'image' => 'required',
-        ]);
-
-        Product::find($id)->update($validatedData);
+        Product::find($id)->update($this->validateData($request));
 
         return redirect()->route('products.index')->with('success', 'Product was updated successfully');
     }
@@ -104,5 +88,15 @@ class ProductController extends Controller
         $product->delete();
 
         return redirect()->route('products.index')->with('success', 'Product was deleted');
+    }
+
+    private function validateData($request) {
+        return $request->validate([
+            'name' => 'required',
+            'price' => 'decimal:2|required',
+            'description' => 'required',
+            'item_number' => 'integer|required',
+            'image' => 'required',
+        ]);
     }
 }
