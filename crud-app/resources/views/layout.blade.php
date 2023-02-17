@@ -10,7 +10,14 @@
 <body>
     <div class="container">
         <h1>Products App</h1>
-        @yield('content')
+        @if(session()->get('success'))
+        <div class="toast toast-success">
+            {{session()->get('success')}}
+        </div>
+        @endif
+        <div class ="mt-1">
+            @yield('content')
+        </div>
     </div>   
 </body>
 </html>
