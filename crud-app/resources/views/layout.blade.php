@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Products</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css%22%3E">
+    <link rel="stylesheet" href="\resources\js\app.js">
 </head>
 <body>
     <div class="container">
@@ -22,6 +22,7 @@
         <div class ="mt-1">
             @yield('content')
         </div>
-    </div>   
+    </div> 
+    <script src="/js/app.js"></script>  
 </body>
 </html>

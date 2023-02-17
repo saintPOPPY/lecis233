@@ -3,7 +3,6 @@
 @section('content')
 
 <div class="container mt-3">
-
   {{-- Create Button Link --}}
   <a class="btn btn-primary" href="{{route('products.create')}}">Create Product</a>
 
