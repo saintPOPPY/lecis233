@@ -22,3 +22,4 @@ Route::get('/', function () {
 
 // Route is now handled by a controller
 Route::resource('products', ProductController::class);
+Route::resource('reviews', ReviewController::class);

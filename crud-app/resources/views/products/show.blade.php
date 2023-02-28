@@ -11,7 +11,6 @@
         <th scope="col">Price</th>
         <th scrope="col">Description</th>
         <th scope="col justify-content-center">Item Number</th>
-        
       </tr>
     </thead>
     <tbody>
@@ -24,9 +23,38 @@
             <td>{{ $product->item_number }}</td>
         </tr>
     </tbody>
-</table>   
+</table>  
 
 <p>
     <a href="{{ route('products.index') }}">All Products</a>
 </p>
+
+{{-- Review Form --}}
+<form method="POST" action="{{route('reviews.store', $product->product_id)}}">
+  @csrf
+  <h3>Leave a Review!</h3>
+  <div class="form-group">
+    <label for="ratingFormControlSelect1">Your Rating</label>
+    <select class="form-control" id="ratingFormControlSelect1">
+      <option selected>Rate this Product</option>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="commentsFormControlTextarea1">Comments</label>
+    <textarea class="form-control" id="commentsFormControlTextarea1" rows="4">Begin typing your review here...</textarea>
+  </div>
+
+{{-- Button to add review --}}
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary">Add Review</button>
+  </div>           
+</form>
+
+{{-- Submitted Reviews --}}
+
 @endsection
