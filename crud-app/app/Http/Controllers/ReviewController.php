@@ -16,15 +16,7 @@ class ReviewController extends Controller
     {
         //
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create(): Response
-    {
-        //
-    }
-
+    
     /**
      * Store a newly created resource in storage.
      */
@@ -32,30 +24,6 @@ class ReviewController extends Controller
     {
         Review::create($this->validateData($request));
         return redirect()->route('products.show', ['product' => $request->product_id])->with('success', 'Comment was created successfully');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id): Response
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id): Response
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id): RedirectResponse
-    {
-        //
     }
 
     /**
