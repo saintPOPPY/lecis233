@@ -11,7 +11,7 @@ class Review extends Model
 
     // Special property built into Laravel which allows mass assignment
     protected $fillable = [
-        'content',
+        'comment',
         'rating',
         'product_id',
     ];

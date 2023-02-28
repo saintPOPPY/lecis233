@@ -1,7 +1,9 @@
 @extends('layout')
 
 @section('content')
+
 <h3>Product Details</h3>
+
 <table class="table table-striped mb-5">
     <thead>
       <tr class="table-success">
@@ -34,7 +36,7 @@
   @csrf
   <label class="form-label" for="product_id" hidden>Product ID</label>
   <input type="number" name="product_id" class="form-control" value="{{$product->id}}" hidden />
-  
+
   <h3>Leave a Review!</h3>
   <div class="form-group">
     <label for="ratingFormControlSelect1">Your Rating</label>
@@ -59,5 +61,4 @@
 </form>
 
 {{-- Submitted Reviews --}}
-
 @endsection
