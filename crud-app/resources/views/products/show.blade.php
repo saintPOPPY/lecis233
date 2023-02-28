@@ -65,18 +65,6 @@
 <p></p>
 
 {{-- Submitted Reviews --}}
-<form method="POST" action="{{route('products.store')}}">
-  @csrf
-  <div class="form-group">
-    <table class="table table-striped mb-5">
-      <thead>
-        <tr class="table-success">
-          <th scope="col">Rating</th>
-          <th scope="col">Comments</th>
-          <th>{{-- Delete --}}</th>
-        </tr>
-      </thead>
-  </div>
-</form>
+
 
 @endsection
