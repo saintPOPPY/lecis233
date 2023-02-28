@@ -19,10 +19,10 @@ class ReviewController extends Controller
         $direction = $request->query('direction') ?? 'desc';
 
         // Eager loaded products
-        // $reviews = Review::with('reviews')->orderBy($sortBy, $direction);
+        $reviews = Review::with('reviews')->orderBy($sortBy, $direction);
 
         // Non-eager loaded products
-        $reviews = Review::query()->orderBy($sortBy, $direction);
+        // $reviews = Review::query()->orderBy($sortBy, $direction);
         return response(view('products.show', ['products' => $reviews->paginate(10)]));
     }
 
