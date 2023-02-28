@@ -22,7 +22,7 @@ class ReviewSeeder extends Seeder
         // Utilize the Faker instance and Faker methods to generate specified data
         foreach(range(1,60) as $number) {
             \App\Models\Review::create([
-                'comment' => $faker->word,
+                'comment' => $faker->text,
                 'rating' => $faker->numberBetween(1,5),
                 'product_id' => \App\Models\Product::all()->pluck('id')->random()
             ]);
