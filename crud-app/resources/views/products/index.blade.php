@@ -15,10 +15,10 @@
   <table class="table table-striped mb-5">
     <thead>
       <tr class="table-success">
+        <th scope="col">Image</th>
         <th scope="col">Product Name</th>
         <th scope="col">Price</th>
         <th scope="col justify-content-center">Item Number</th>
-        <th scope="col">Image</th>
         <th>{{-- Show Detail --}}</th>
         <th>{{-- Edit Detail --}}</th>
         <th>{{-- Delete --}}</th>
@@ -27,10 +27,10 @@
     <tbody>
       @foreach($products as $product)
       <tr>
+        <td><img src="{{$product->image}}" alt="{{$product->image}}" class="img-thumbnail"></td>
         <td>{{ $product->name }}</td>
         <td>${{ $product->price }}</td>
         <td>{{ $product->item_number }}</td>
-        <td><img src="{{$product->image}}" alt="{{$product->image}}" class="img-thumbnail"></td>
         <td><a href="{{route('products.show', $product->id)}}">Show Detail</a></td>
         <td><a class=bootstrap class href="{{route('products.edit', $product->id)}}">Edit</a></td>
         
