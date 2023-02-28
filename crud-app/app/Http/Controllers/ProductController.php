@@ -21,6 +21,9 @@ class ProductController extends Controller
         $sortBy = $request->query('sortBy') ?? 'name';
         $direction = $request->query('direction') ?? 'asc';
 
+        // Eager loaded products
+        // $products = Product::with('products')->orderBy($sortBy, $direction);
+
         // Non-eager loaded products
         $products = Product::query()->orderBy($sortBy, $direction);
         return response(view('products.index', ['products' => $products->paginate(10)]));
