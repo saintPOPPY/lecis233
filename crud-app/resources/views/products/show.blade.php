@@ -38,6 +38,7 @@
   <input type="hidden" name="product_id" id="product_id" value="{{ $product->product_id }}">
 
   <h3>Leave a Review!</h3>
+  
   <div class="form-group">
     <label for="ratingFormControlSelect1">Your Rating</label>
     <select class="form-control" id="ratingFormControlSelect1">
@@ -49,6 +50,7 @@
       <option>5</option>
     </select>
   </div>
+  
   <div class="form-group">
     <label for="commentsFormControlTextarea1">Comments</label>
     <textarea class="form-control" id="commentsFormControlTextarea1" rows="4">Begin typing your review here...</textarea>
@@ -59,9 +61,22 @@
     <button type="submit" class="btn btn-primary">Add Review</button>
   </div>           
 </form>
-<p></p>
-{{-- Submitted Reviews --}}
 
+<p></p>
+
+{{-- Submitted Reviews --}}
+<form method="POST" action="{{route('products.store')}}">
+  @csrf
+  <div class="form-group">
+    <table class="table table-striped mb-5">
+      <thead>
+        <tr class="table-success">
+          <th scope="col">Rating</th>
+          <th scope="col">Comments</th>
+          <th>{{-- Delete --}}</th>
+        </tr>
+      </thead>
+  </div>
 </form>
 
 @endsection
