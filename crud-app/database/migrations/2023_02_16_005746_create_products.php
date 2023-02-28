@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('description');
             $table->integer('item_number');
             $table->string('image');
-            $table->timestamps();
+            $table->timestamps(); 
         });
     }
 
