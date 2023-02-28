@@ -5,20 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Review extends Model
 {
     use HasFactory;
 
     // Special property built into Laravel which allows mass assignment
     protected $fillable = [
-        'name',
-        'price',
-        'description',
-        'item_number',
-        'image'
+        'content',
+        'rating',
+        'product_id',
     ];
 
     public function review() {
-        return $this->hasMany(Review::class);
+        return $this->belongsTo(Product::class);
     }
 }
