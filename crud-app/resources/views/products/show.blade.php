@@ -61,4 +61,10 @@
 </form>
 
 {{-- Submitted Reviews --}}
+<form method="POST" action="{{route('reviews.store')}}">
+  @csrf
+  <h1>form</h1>
+
+</form>
+
 @endsection
