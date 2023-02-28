@@ -61,37 +61,7 @@
 </form>
 <p></p>
 {{-- Submitted Reviews --}}
-<form method="POST" action="{{route('reviews.store')}}">
-  @csrf
-  <h2>Feedback</h2>
-  <table class="table table-striped mb-5">
-    <thead>
-      <tr class="table-success">
-        <th scope="col">Rating</th>
-        <th scope="col">Comments</th>
-        <th>{{-- Delete --}}</th>
-      </tr>
-    </thead>
-    <tbody>
-      @foreach($reviews as $review)
-      <tr>
-        <td>{{ $review->rating}}</td>
-        <td>{{ $review->comment}}</td>
-        
-        {{-- Destroy Form... --}}
-        <td>
-          <form action="{{route('reviews.destroy', $review->id)}}" method="POST" onSubmit="return confirm('Are you sure you want to delete?');">
-            @csrf
-            @method('DELETE')
-            <button class="btn btn-error" type="submit">Delete</button>
-          </form>
-        </td>
-        {{-- ... end of Destroy Form --}}
 
-      </tr>
-      @endforeach
-    </tbody>
-  </table>
 </form>
 
 @endsection
