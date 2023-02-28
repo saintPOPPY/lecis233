@@ -31,7 +31,7 @@ class ReviewController extends Controller
     public function store(Request $request): RedirectResponse
     {
         Review::create($this->validateData($request));
-        return redirect()->route('products.show', $request->product_id)->with('success', 'Review was created successfully');
+        return redirect()->route('products.show', ['product' => $request->product_id])->with('success', 'Review was created successfully');
     }
 
     /**
