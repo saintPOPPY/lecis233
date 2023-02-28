@@ -32,6 +32,9 @@
 {{-- Review Form --}}
 <form method="POST" action="{{route('reviews.store', $product->product_id)}}">
   @csrf
+  <label class="form-label" for="product_id" hidden>Product ID</label>
+  <input type="number" name="product_id" class="form-control" value="{{$product->id}}" hidden />
+  
   <h3>Leave a Review!</h3>
   <div class="form-group">
     <label for="ratingFormControlSelect1">Your Rating</label>

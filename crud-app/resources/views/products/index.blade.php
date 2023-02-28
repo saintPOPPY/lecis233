@@ -31,7 +31,7 @@
         <td><img src="{{$product->image}}" alt="{{$product->image}}" class="img-thumbnail"></td>
         <td>{{ $product->name }}</td>
         <td>${{ $product->price }}</td>
-        <td><a href="{{route('products.show', $product->id)}}">Show Detail</a></td>
+        <td><a href="{{route('products.show', $product->id)}}">Show Details</a></td>
         <td><a class=bootstrap class href="{{route('products.edit', $product->id)}}">Edit</a></td>
         
         {{-- Destroy Form... --}}
