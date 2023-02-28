@@ -32,7 +32,7 @@ class ReviewController extends Controller
     public function store(Request $request): RedirectResponse
     {
         Review::create($this->validateData($request));
-        return redirect()->route('products.show', ['product' => $request->product_id])->with('success', 'Comment was created successfully');
+        return redirect()->route('products.show', ['product' => $request->product_id])->with('success', 'Thanks for your review!');
     }
 
     /**
@@ -43,7 +43,7 @@ class ReviewController extends Controller
         $review = Review::findOrFail($id);
         $review->delete();
         
-        return redirect()->route('products.show', $review->product_id)->with('success', 'Comment was deleted');
+        return redirect()->route('products.show', $review->product_id)->with('success', 'Review was deleted');
     }
 
     // Validate data
