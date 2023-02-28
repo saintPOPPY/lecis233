@@ -15,10 +15,15 @@ class ProductController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function index(): Response
+    public function index(Request $request): Response
     {
-        $products = Product::paginate(10);
-        return response(view('products.index', ['products' => $products]));
+        // Assigning variables to sort by 'name' in ascending order in our sql call below
+        $sortBy = $request->query('sortBy') ?? 'name';
+        $direction = $request->query('direction') ?? 'asc';
+
+        // Non-eager loaded products
+        $products = Product::query()->orderBy($sortBy, $direction);
+        return response(view('products.index', ['products' => $products->paginate(10)]));
     }
 
     /**
