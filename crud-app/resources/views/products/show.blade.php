@@ -42,11 +42,14 @@
 
       {{-- Rating & Comment Input --}}
       <div class="form-group">
+        
+        {{-- Product_ID (Hidden) --}}
         <label class="form-label" for="product_id" hidden>Product ID</label>
         <input type="hidden" name="product_id" id="product_id" value="{{ $product->product_id }}">
 
-        <label for="ratingSelect">Your Rating</label>
-        <select class="form-control" id="ratingSelect" value="{{ $product->rating }}">
+        {{-- Rating --}}
+        <label for="rating">Your Rating</label>
+        <select class="form-control" type="select" name="rating" id="rating" value="{{old('rating', $product->rating)}}">
           <option selected>Rate this Product</option>
           <option>1</option>
           <option>2</option>
@@ -54,9 +57,10 @@
           <option>4</option>
           <option>5</option>
         </select>
-      
-        <label for="commentsTextArea">Comments</label>
-        <textarea class="form-control" id="commentsTextArea" rows="4" value="{{ $product->comment }}">Begin typing your review here...</textarea>
+        
+        {{-- Comments --}}
+        <label for="comment">Comments</label>
+        <textarea class="form-control" type="text" name="comment" id="comment" rows="4" value="{{old('comment', $product->comment)}}">Begin typing your review here...</textarea>
       </div>
 
       {{-- Add Review Button --}}
