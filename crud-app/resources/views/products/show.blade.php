@@ -36,7 +36,7 @@
 
 {{-- Submit Review Section --}}
   <div class="container mt-3">
-      <h3>Leave a Review!</h3>
+    <h3>Leave a Review!</h3>
     <form action="{{ route('reviews.store') }}" method="POST">
       @csrf
       @include('reviews.form')
