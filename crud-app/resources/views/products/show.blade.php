@@ -40,9 +40,16 @@
     <form action="{{ route('reviews.store') }}" method="POST">
       @csrf
 
-      {{-- Rating & Comment Input --}}
+      {{-- Input --}}
       <div class="form-group">
-        
+        {{-- Display error messages if they exist --}}
+        @if ($errors->any())
+          <div class="toast toast-error">
+            @foreach ($errors->all() as $error)
+              <span>{{$error}}</span><br />
+            @endforeach
+          </div>
+        @endif
         {{-- Product_ID (Hidden) --}}
         <label class="form-label" for="product_id" hidden>Product ID</label>
         <input type="hidden" name="product_id" id="product_id" value="{{ $product->product_id }}">

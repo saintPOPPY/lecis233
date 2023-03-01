@@ -15,7 +15,16 @@ class ReviewController extends Controller
      */
     public function index(Request $request): Response
     {
-        
+        // Assigning variables to sort by 'name' in ascending order in our sql call below
+        $sortBy = $request->query('sortBy') ?? 'rating';
+        $direction = $request->query('direction') ?? 'desc';
+
+        // Eager loaded products
+        $reviews = Review::with('reviews')->orderBy($sortBy, $direction);
+
+        // Non-eager loaded products
+        // $reviews = Review::query()->orderBy($sortBy, $direction);
+        return response(view('products.show', ['products' => $reviews->paginate(10)]));
     }
 
     /**
