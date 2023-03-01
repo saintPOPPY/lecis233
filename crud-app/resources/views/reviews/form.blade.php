@@ -17,7 +17,7 @@
         <select class="form-control" name="rating" id="rating" value="{{ $product->rating }}">
             <option selected>Rate this Product</option>
                 @forEach ( range(1,5) as $ratingSelected )
-                <option value="{{ $ratingSelected }}">{{ $ratingSelected }}</option>
+                <option value="{{ $ratingSelected }}">{{ $ratingSelected }}&starf;</option>
                 @endForEach
         </select>
         

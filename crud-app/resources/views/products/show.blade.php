@@ -58,7 +58,7 @@
         @foreach($product->review as $review)
         @csrf
         <tr>
-            <td>{{ $review->rating }}</td>
+            <td>{{ $review->rating }}&starf;</td>
             <td>{{ $review->comment }}</td>
             <td>
               <form action="{{route('reviews.destroy', $review)}}" method="POST" onSubmit="return confirm('Are you sure you want to delete?');">
