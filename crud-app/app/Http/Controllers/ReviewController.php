@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Review;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+
+use \App\Models\Review;
 
 class ReviewController extends Controller
 {
@@ -32,7 +33,38 @@ class ReviewController extends Controller
     public function store(Request $request): RedirectResponse
     {
         Review::create($this->validateData($request));
-        return redirect()->route('products.show', ['product' => $request->product_id])->with('success', 'Thanks for your review!');
+        return redirect()->route('products.show', $request->product_id)->with('success', 'Comment was added successully');
+    }
+
+    /**
+     * Display the specified resource.
+     * 
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     * 
+     */
+    public function show(string $id): Response
+    {
+
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     * 
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(string $id): Response
+    {
+
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id): RedirectResponse
+    {
+        
     }
 
     /**
@@ -42,8 +74,8 @@ class ReviewController extends Controller
     {
         $review = Review::findOrFail($id);
         $review->delete();
-        
-        return redirect()->route('products.show', $review->product_id)->with('success', 'Review was deleted');
+
+        return redirect()->route('products.show', $review->product_id)->with('success', 'Product was deleted');
     }
 
     // Validate data
