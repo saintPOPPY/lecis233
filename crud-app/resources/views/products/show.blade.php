@@ -46,7 +46,9 @@
   {{-- Table of Reviews --}}
   <div class="container mt-3">
     <h2>Feedback</h2>
-    <table class="table table-striped mb-5">
+
+    @if ($product->review)
+      <table class="table table-striped mb-5">
       <thead>
         <tr class="table-success">
           <th scope="col">Rating</th>
@@ -70,6 +72,10 @@
         </tr>
         @endforeach
       </tbody>
-    </table>
+    </table>    
+    @else
+      <h3>No Reviews yet</h3>    
+    @endif
+    
   </div>
 @endsection

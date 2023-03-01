@@ -25,7 +25,7 @@
         
     {{-- Comments --}}
     <label for="comment">Comments</label>
-      <textarea class="form-control" name="comment" id="comment" rows="4" value="{{ $product->comment }}">Begin typing your review here...</textarea>
+      <textarea class="form-control" name="comment" id="comment" rows="4" value="{{ $product->comment }}"></textarea>
   </div>
 
     {{-- Add Review Button --}}
