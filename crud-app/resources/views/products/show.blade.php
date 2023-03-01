@@ -49,7 +49,7 @@
 
         {{-- Rating --}}
         <label for="rating">Your Rating</label>
-        <select class="form-control" type="select" name="rating" id="rating" value="{{old('rating', $product->rating)}}">
+        <select class="form-control" name="rating" id="rating" value="{{old('rating', $product->rating)}}">
           <option selected>Rate this Product</option>
           <option>1</option>
           <option>2</option>
@@ -60,7 +60,7 @@
         
         {{-- Comments --}}
         <label for="comment">Comments</label>
-        <textarea class="form-control" type="text" name="comment" id="comment" rows="4" value="{{old('comment', $product->comment)}}">Begin typing your review here...</textarea>
+        <textarea class="form-control" name="comment" id="comment" rows="4" value="{{old('comment', $product->comment)}}">Begin typing your review here...</textarea>
       </div>
 
       {{-- Add Review Button --}}
