@@ -15,12 +15,10 @@
         {{-- Rating --}}
         <label for="rating">Your Rating</label>
         <select class="form-control" name="rating" id="rating" value="{{ $product->rating }}">
-          <option selected>Rate this Product</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
+            <option selected>Rate this Product</option>
+                @forEach ( range(1,5) as $ratingSelected )
+                <option value="{{ $ratingSelected }}">{{ $ratingSelected }}</option>
+                @endForEach
         </select>
         
         {{-- Comments --}}
