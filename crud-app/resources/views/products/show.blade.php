@@ -3,7 +3,7 @@
 @section('content')
 
 <h3>Product Details</h3>
-
+{{-- Product Details --}}
 <table class="table table-striped mb-5">
     <thead>
       <tr class="table-success">
@@ -27,23 +27,23 @@
     </tbody>
 </table>  
 
+{{-- Return to All Products --}}
 <p>
     <a href="{{ route('products.index') }}">All Products</a>
 </p>
-
 <p></p>
 
 {{-- Review Section --}}
-<form action="{{route('reviews.store', $product->product_id)}}" method="POST">
+<h3>Leave a Review!</h3>
+<form action="{{ route('reviews.store') }}" method="POST">
   @csrf
   <label class="form-label" for="product_id" hidden>Product ID</label>
   <input type="hidden" name="product_id" id="product_id" value="{{ $product->product_id }}">
 
-  <h3>Leave a Review!</h3>
-  {{-- Review: Rating Input --}}
+  {{-- Input(Select): Rating --}}
   <div class="form-group">
-    <label for="ratingFormControlSelect1">Your Rating</label>
-    <select class="form-control" id="ratingFormControlSelect1" value="{{ $product->rating }}">
+    <label for="ratingSelect">Your Rating</label>
+    <select class="form-control" id="ratingSelect" value="{{ $product->product_id }}">
       <option selected>Rate this Product</option>
       <option>1</option>
       <option>2</option>
@@ -53,21 +53,23 @@
     </select>
   </div>
   
-  {{-- Review: Comment Input --}}
+  {{-- Input: Comment --}}
   <div class="form-group">
-    <label for="commentsFormControlTextarea1">Comments</label>
-    <textarea class="form-control" id="commentsFormControlTextarea1" rows="4" value="{{ $product->comments }}">Begin typing your review here...</textarea>
+    <label for="commentsTextArea">Comments</label>
+    <textarea class="form-control" id="commentsTextArea" rows="4" value="{{ $product->product_id }}">Begin typing your review here...</textarea>
   </div>
 
   {{-- Add Review Button --}}
   <div class="form-group">
     <button type="submit" class="btn btn-primary">Add Review</button>
   </div>
-
 </form>
+
+<p></p>
   
-  {{-- Table of Submitted Reviews --}}
+  {{-- Table of Reviews --}}
   <div class="form-group">
+    <h2>Feedback</h2>
     <table class="table table-striped mb-5">
       <thead>
         <tr class="table-success">
