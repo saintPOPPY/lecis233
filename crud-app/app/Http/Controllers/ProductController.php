@@ -17,12 +17,8 @@ class ProductController extends Controller
      */
     public function index(Request $request): Response
     {
-        // Eager loaded products
-        // $products = Product::with('products')->orderBy($sortBy, $direction);
-
-        // Non-eager loaded products
-        $products = Product::query();
-        return response(view('products.index', ['products' => $products->paginate(10)]));
+        $products = Product::paginate(10);
+        return response(view('products.index', ['products' => $products]));
     }
 
     /**
