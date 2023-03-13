@@ -17,15 +17,11 @@ class ProductController extends Controller
      */
     public function index(Request $request): Response
     {
-        // Assigning variables to sort by 'name' in ascending order in our sql call below
-        $sortBy = $request->query('sortBy') ?? 'name';
-        $direction = $request->query('direction') ?? 'asc';
-
         // Eager loaded products
         // $products = Product::with('products')->orderBy($sortBy, $direction);
 
         // Non-eager loaded products
-        $products = Product::query()->orderBy($sortBy, $direction);
+        $products = Product::query();
         return response(view('products.index', ['products' => $products->paginate(10)]));
     }
 
