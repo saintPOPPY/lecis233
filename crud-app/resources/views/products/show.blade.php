@@ -57,13 +57,17 @@
         </tr>
       </thead>
       <tbody>
-        @foreach($product->reviews as $reviews)
+        @foreach($product->reviews as $review)
         @csrf
         <tr>
-            <td>{{ $reviews->rating }}&starf;</td>
-            <td>{{ $reviews->comment }}</td>
             <td>
-              <form action="{{route('reviews.destroy', $reviews)}}" method="POST" onSubmit="return confirm('Are you sure you want to delete?');">
+              @for ($i = 0;  $i < $review->rating; $i++)
+              &starf;
+              @endfor
+            </td>
+            <td>{{ $review->comment }}</td>
+            <td>
+              <form action="{{route('reviews.destroy', $review)}}" method="POST" onSubmit="return confirm('Are you sure you want to delete?');">
                 @csrf
                 @method('DELETE')
                 <button class="btn btn-error" type="submit">Delete</button>
