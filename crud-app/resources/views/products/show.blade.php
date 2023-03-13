@@ -47,7 +47,7 @@
   <div class="container mt-3">
     <h2>Feedback</h2>
 
-    @if ($product->review)
+    @if ($product->reviews)
       <table class="table table-striped mb-5">
       <thead>
         <tr class="table-success">
@@ -57,13 +57,13 @@
         </tr>
       </thead>
       <tbody>
-        @foreach($product->review as $review)
+        @foreach($product->reviews as $reviews)
         @csrf
         <tr>
-            <td>{{ $review->rating }}&starf;</td>
-            <td>{{ $review->comment }}</td>
+            <td>{{ $reviews->rating }}&starf;</td>
+            <td>{{ $reviews->comment }}</td>
             <td>
-              <form action="{{route('reviews.destroy', $review)}}" method="POST" onSubmit="return confirm('Are you sure you want to delete?');">
+              <form action="{{route('reviews.destroy', $reviews)}}" method="POST" onSubmit="return confirm('Are you sure you want to delete?');">
                 @csrf
                 @method('DELETE')
                 <button class="btn btn-error" type="submit">Delete</button>
