@@ -18,8 +18,6 @@ class ReviewController extends Controller
         // Eager loaded products
         $reviews = Review::with('reviews');
 
-        // Non-eager loaded products
-        // $reviews = Review::query();
         return response(view('products.show', ['products' => $reviews->paginate(10)]));
     }
 
