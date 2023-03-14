@@ -4,15 +4,6 @@
 <div class="column col-3">
     <h3>Create a new Product</h3>
 
-    {{-- Display error messages if they exist --}}
-    @if ($errors->any())
-    <div class="toast toast-error">
-        @foreach ($errors->all() as $error)
-            <span>{{$error}}</span><br />
-        @endforeach
-    </div>
-    @endif
-
     <form method="POST" action="{{route('products.store')}}">
         @csrf
         {{-- Data-entry Fields --}}
