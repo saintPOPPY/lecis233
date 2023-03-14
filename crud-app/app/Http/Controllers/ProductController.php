@@ -15,7 +15,7 @@ class ProductController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function index(): Response
+    public function index(Request $request): Response
     {
         $products = Product::paginate(10);
         return response(view('products.index', ['products' => $products]));
@@ -51,8 +51,8 @@ class ProductController extends Controller
      * 
      */
     public function show(string $id): Response
-    {
-        $product = Product::findOrFail($id);
+    {   
+        $product = Product::with('reviews')->findOrFail($id);
         return response(view('products.show', ['product' => $product]));
     }
 
