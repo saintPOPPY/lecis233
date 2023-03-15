@@ -68,6 +68,7 @@
             </td>
             <td>{{ $review->comment }}</td>
             <td>{{ $review->name }}</td>
+
             @can('viewAny', App\Models\Review::class)
             <td>
               <form action="{{route('reviews.destroy', $review)}}" method="POST" onSubmit="return confirm('Are you sure you want to delete?');">
@@ -77,6 +78,7 @@
               </form>
             </td>
             @endcan
+            
         </tr>
         @endforeach
       </tbody>
