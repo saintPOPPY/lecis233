@@ -2,6 +2,10 @@
 
 @section('content')
 
+{{-- @can('create', App\Models\Product::class)
+  <a class="btn btn-primary" href="{{route('products.create')}}">Create</a>
+@endcan --}}
+
 <div class="container mt-3">
   {{-- Create Button Link --}}
   <a class="btn btn-primary" href="{{route('products.create')}}">Create Product</a>
@@ -32,8 +36,9 @@
         <td>{{ $product->name }}</td>
         <td>${{ $product->price }}</td>
         <td><a href="{{route('products.show', $product->id)}}">Show Details</a></td>
+
+        {{-- @can('viewAny', App\Models\Product::class) --}}
         <td><a class=bootstrap class href="{{route('products.edit', $product->id)}}">Edit</a></td>
-        
         {{-- Destroy Form... --}}
         <td>
           <form action="{{route('products.destroy', $product->id)}}" method="POST" onSubmit="return confirm('Are you sure you want to delete?');">
@@ -43,6 +48,7 @@
           </form>
         </td>
         {{-- ... end of Destroy Form --}}
+        {{-- @endcan --}}
 
       </tr>
       @endforeach
