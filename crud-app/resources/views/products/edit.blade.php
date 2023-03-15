@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('dashboard')
 
 @section('content')
 <div class="column col-3">
