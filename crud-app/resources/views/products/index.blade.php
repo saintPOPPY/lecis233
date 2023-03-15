@@ -34,6 +34,7 @@
         <td>${{ $product->price }}</td>
         <td><a href="{{route('products.show', $product->id)}}">Show Details</a></td>
 
+        {{-- Permissions Conditions --}}
         @can('viewAny', App\Models\Product::class)
         <td><a class=bootstrap class href="{{route('products.edit', $product->id)}}">Edit</a></td>
         {{-- Destroy Form... --}}
@@ -46,7 +47,7 @@
         </td>
         {{-- ... end of Destroy Form --}}
         @endcan
-
+        {{-- End Permissions Conditions --}}
       </tr>
       @endforeach
     </tbody>
