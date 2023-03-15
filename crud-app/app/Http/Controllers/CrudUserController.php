@@ -2,91 +2,101 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProfileUpdateRequest;
-use App\Models\User;
-use App\Providers\RouteServiceProvider;
-
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\View\View;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
+use Illuminate\Http\Response;
 
+use \App\Models\User;
 
 class CrudUserController extends Controller
 {
     /**
-     * Create the user profile.
+     * Display a listing of the resource.
+     * 
+     * @return \Illuminate\Http\Response
      */
-
-    public function store(Request $request): RedirectResponse
+    public function index(Request $request): Response
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
-
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
-
-        event(new Registered($user));
-
-        Auth::login($user);
-
-        return redirect(RouteServiceProvider::HOME);
+        $users = User::paginate(10);
+        return response(view('users.index', ['users' => $users]));
     }
 
     /**
-     * Display the user's profile form.
+     * Show the form for creating a new resource.
      */
-    public function edit(Request $request): View
+    public function create(Request $request)
     {
-        return view('users.edit', [
-            'user' => $request->user(),
-        ]);
-    }
-
-    /**
-     * Update the user's information.
-     */
-    public function update(ProfileUpdateRequest $request): RedirectResponse
-    {
-        $request->user()->fill($request->validated());
-
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        if ($request->user()->cannot('create', User::class)){
+            return redirect()->route('users.index')->with('error', 'You do not have permission.');
         }
 
-        $request->user()->save();
-
-        return Redirect::route('users.edit')->with('status', 'user-updated');
+        $user = new User;
+        return response(view('users.create', ['user' => $user]));
     }
 
     /**
-     * Delete the user's account.
+     * Store a newly created resource in storage.
+     * 
+     * @param \Illuminate\Http\Request
+     * @return \Illuminate\Http\Response 
+     * 
      */
-    public function destroy(Request $request): RedirectResponse
+    public function store(Request $request): RedirectResponse
     {
-        $request->validateWithBag('userDeletion', [
-            'password' => ['required', 'current-password'],
-        ]);
+        User::create($this->validateData($request));
+        return redirect()->route('users.index')->with('success', 'User was created successfully');
+    }
 
-        $user = $request->user();
+    /**
+     * Display the specified resource.
+     * 
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     * 
+     */
+    public function show(string $id): Response
+    {   
+        $user = User::with('reviews')->findOrFail($id);
+        return response(view('users.show', ['user' => $user]));
+    }
 
-        Auth::logout();
+    /**
+     * Show the form for editing the specified resource.
+     * 
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(string $id): Response
+    {
+        $user = User::findOrFail($id);
+        return response(view('users.edit', ['user' => $user]));
+    }
 
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id): RedirectResponse
+    {
+        User::find($id)->update($this->validateData($request));
+        return redirect()->route('users.index')->with('success', 'User was updated successfully');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id): RedirectResponse
+    {
+        $user = User::findOrFail($id);
         $user->delete();
 
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
+        return redirect()->route('users.index')->with('success', 'User was deleted');
+    }
 
-        return Redirect::to('/');
+    private function validateData($request) {
+        return $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+        ]);
     }
 }
