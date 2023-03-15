@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 use Ramsey\Uuid\Type\Decimal;
 
 class UserSeeder extends Seeder
@@ -24,7 +25,7 @@ class UserSeeder extends Seeder
             \App\Models\User::create([
                 'name' => $faker->name(),
                 'email' => $faker->email(),
-                'password' => $faker->password(),
+                'password' => Hash::make('password'),
             ]);
         }
     }
