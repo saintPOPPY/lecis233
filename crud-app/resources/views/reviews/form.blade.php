@@ -14,6 +14,10 @@
     <label class="form-label" for="product_id" hidden>Product ID</label>
     <input type="number" name="product_id" class="form-control" value="{{$product->id}}" hidden />
 
+    {{-- User_ID (Hidden) --}}
+    <label class="form-label" for="product_id" hidden>User ID</label>
+    <input type="number" name="user_id" class="form-control" value="{{Auth::user()->id}}" hidden />
+
     {{-- Rating --}}
     <label for="rating">Your Rating</label>
     <select class="form-control" name="rating" id="rating" value="{{ $product->rating }}">
