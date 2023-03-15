@@ -34,7 +34,7 @@ class CrudUserController extends Controller
 
         $request->user()->save();
 
-        return Redirect::route('users.edit')->with('status', 'profile-updated');
+        return Redirect::route('users.edit')->with('status', 'user-updated');
     }
 
     /**
