@@ -24,8 +24,12 @@ class ProductController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(): Response
+    public function create(Request $request)
     {
+        if ($request->user()->cannot('create', Product::class)){
+            return redirect()->route('products.index')->with('error', 'You do not have permission.');
+        }
+
         $product = new Product;
         return response(view('products.create', ['product' => $product]));
     }
@@ -39,10 +43,6 @@ class ProductController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        // if ($request->user()->cannot('create', Product::class)) {
-        //     return redirect()->route('products.index')->with('error', 'You do not have permission.');
-        // }
-
         Product::create($this->validateData($request));
         return redirect()->route('products.index')->with('success', 'Product was created successfully');
     }

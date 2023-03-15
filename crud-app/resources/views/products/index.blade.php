@@ -2,13 +2,13 @@
 
 @section('content')
 
-{{-- @can('create', App\Models\Product::class)
+@can('create', App\Models\Product::class)
   <a class="btn btn-primary" href="{{route('products.create')}}">Create</a>
-@endcan --}}
+@endcan
 
 <div class="container mt-3">
   {{-- Create Button Link --}}
-  <a class="btn btn-primary" href="{{route('products.create')}}">Create Product</a>
+  {{-- <a class="btn btn-primary" href="{{route('products.create')}}">Create Product</a> --}}
 
   {{-- Paginated Links (Top) --}}
   <div class="d-flex justify-content-center">
@@ -37,7 +37,7 @@
         <td>${{ $product->price }}</td>
         <td><a href="{{route('products.show', $product->id)}}">Show Details</a></td>
 
-        {{-- @can('viewAny', App\Models\Product::class) --}}
+        @can('viewAny', App\Models\Product::class)
         <td><a class=bootstrap class href="{{route('products.edit', $product->id)}}">Edit</a></td>
         {{-- Destroy Form... --}}
         <td>
@@ -48,7 +48,7 @@
           </form>
         </td>
         {{-- ... end of Destroy Form --}}
-        {{-- @endcan --}}
+        @endcan
 
       </tr>
       @endforeach
