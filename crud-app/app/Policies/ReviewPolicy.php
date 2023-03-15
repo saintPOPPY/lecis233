@@ -29,7 +29,7 @@ class ReviewPolicy
      */
     public function create(User $user): bool
     {
-        return $user->role == "viewer";
+        return $user->role == "administrator";
     }
 
     /**
