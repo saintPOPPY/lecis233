@@ -53,6 +53,7 @@
         <tr class="table-success">
           <th scope="col">Rating</th>
           <th scope="col">Comments</th>
+          <th scope="col">Name</th>
           <th>{{-- Delete --}}</th>
         </tr>
       </thead>
@@ -66,6 +67,7 @@
               @endfor
             </td>
             <td>{{ $review->comment }}</td>
+            <td>{{ $review->name }}</td>
             <td>
               <form action="{{route('reviews.destroy', $review)}}" method="POST" onSubmit="return confirm('Are you sure you want to delete?');">
                 @csrf

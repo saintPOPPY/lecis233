@@ -78,6 +78,7 @@ class ReviewController extends Controller
             'comment' => 'required',
             'rating' => 'integer|required',
             'product_id' => 'integer|required',
+            'user_id' => 'integer|required'
         ]);
     }
 }
