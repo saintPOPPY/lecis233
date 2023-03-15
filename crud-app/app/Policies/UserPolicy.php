@@ -2,11 +2,10 @@
 
 namespace App\Policies;
 
-use App\Models\Product;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class ProductPolicy
+class UserPolicy
 {
     /**
      * Determine whether the user can view any models.
@@ -21,7 +20,7 @@ class ProductPolicy
      */
     public function view(User $user): bool
     {
-        return $user->role == "viewer";
+        return $user->role == "administrator";
     }
 
     /**
