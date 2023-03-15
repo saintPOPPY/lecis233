@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
         // Utilize the Faker instance and Faker methods to generate specified data
         foreach(range(1,10) as $number) {
             \App\Models\User::create([
-                'name' => $faker->fullName(),
+                'name' => $faker->name(),
                 'email' => $faker->email(),
                 'password' => $faker->password(),
             ]);

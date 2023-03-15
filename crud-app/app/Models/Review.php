@@ -13,7 +13,9 @@ class Review extends Model
     protected $fillable = [
         'comment',
         'rating',
+        'name',
         'product_id',
+        'user_id'
     ];
 
     public function product() {

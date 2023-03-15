@@ -24,6 +24,7 @@ class ReviewSeeder extends Seeder
             \App\Models\Review::create([
                 'comment' => $faker->text,
                 'rating' => $faker->numberBetween(1,5),
+                'name' => \App\Models\Product::all()->pluck('name')->random(),
                 'product_id' => \App\Models\Product::all()->pluck('id')->random(),
                 'user_id' => \App\Models\User::all()->pluck('id')->random()
             ]);
