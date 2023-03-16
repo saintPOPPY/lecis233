@@ -2,15 +2,15 @@
 
 @section('content')
 
-{{-- @can('create', App\Models\User::class) --}}
+@can('create', App\Models\User::class)
   <a class="btn btn-primary" href="{{route('users.create')}}">Create</a>
-{{-- @endcan --}}
+@endcan
 
  <div class="container mt-3">
   {{-- Paginated Links (Top) --}}
-  {{-- <div class="d-flex justify-content-center">
-    {{ $products->links() }}
-  </div> --}}
+  <div class="d-flex justify-content-center">
+    {{ $users->links() }}
+  </div>
 
   {{-- Data Table (Seeded) --}}
   <table class="table table-striped mb-5">
@@ -18,7 +18,6 @@
       <tr class="table-success">
         <th scope="col">Name</th>
         <th scope="col">Email</th>
-        <th scope="col">Password</th>
         <th>{{-- Show Detail --}}</th>
         <th>{{-- Edit Detail --}}</th>
         <th>{{-- Delete --}}</th>
@@ -29,11 +28,10 @@
       <tr>
         <td>{{ $user->name }}</td>
         <td>{{ $user->email }}</td>
-        <td>{{ $user->password }}</td>
-        <td><a href="{{route('users.show', $user->id)}}">Show Details</a></td>
 
         {{-- Permissions Conditions --}}
         @can('viewAny', App\Models\User::class)
+        <td><a href="{{route('users.show', $user->id)}}">Show Details</a></td>
         <td><a class=bootstrap class href="{{route('users.edit', $user->id)}}">Edit</a></td>
         {{-- Destroy Form... --}}
         <td>
@@ -52,9 +50,9 @@
   </table>
   
   {{-- Paginated Links (Bot) --}}
-  {{-- <div class="d-flex justify-content-center">
-    {{ $products->links() }}
-  </div> --}}
+  <div class="d-flex justify-content-center">
+    {{ $users->links() }}
+  </div>
 
 </div> 
 @endSection
