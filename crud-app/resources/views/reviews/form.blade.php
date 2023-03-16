@@ -33,10 +33,14 @@
         
     {{-- Comments --}}
     <label for="comment">Comments</label>
-      <textarea class="form-control" name="comment" id="comment" rows="4" value="{{ $product->comment }}"></textarea>
-  </div>
-
+    <textarea class="form-control" name="comment" id="comment" rows="4" value="{{ $product->comment }}"></textarea>
+    
     {{-- Add Review Button --}}
     <div class="form-group">
       <button type="submit" class="btn btn-primary">Add Review</button>
     </div>
+    
+  </div>
+
+    
+  
