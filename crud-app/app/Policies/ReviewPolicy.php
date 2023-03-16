@@ -21,7 +21,7 @@ class ReviewPolicy
      */
     public function view(User $user): bool
     {
-        return $user->role == "viewer";
+        //
     }
 
     /**
