@@ -8,9 +8,10 @@
   <table class="table table-striped mb-5">
     <thead>
       <tr class="table-success">
+        <th scope="col">ID</th>
         <th scope="col">Name</th>
         <th scope="col">Email</th>
-        <th scope="col">Password</th>
+        {{-- <th scope="col">Password</th> --}}
       </tr>
     </thead>
     <tbody>
@@ -18,7 +19,7 @@
             <th scope="row">{{ $user->id }}</th>
             <td>{{ $user->name }}</td>
             <td>${{ $user->email }}</td>
-            <td>{{$user->password}}</td>
+            {{-- <td>{{$user->password}}</td> --}}
         </tr>
     </tbody>
   </table>  

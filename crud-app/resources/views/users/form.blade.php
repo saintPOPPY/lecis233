@@ -12,5 +12,5 @@
 <input class="form-input" type="text" name="name" id="name" value="{{old('name', $user->name)}}">
 <label class="form-label" for="email">Email</label>
 <input class="form-input" type="text" name="email" id="email" value="{{old('email', $user->email)}}">
-<label class="form-label" for="password">Password</label>
-<input class="form-input" type="text" name="password" id="password" value="{{old('password', $user->password)}}">
+{{-- <label class="form-label" for="password">Password</label>
+<input class="form-input" type="text" name="password" id="password" value="{{old('password', $user->password)}}"> --}}
