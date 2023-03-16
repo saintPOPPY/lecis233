@@ -1,23 +1,32 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('User') }}
-        </h2>
-    </x-slot>
+@extends('dashboard')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('users.partials.update-user-information-form')
-                </div>
-            </div>
+@section('content')
+<div class="column col-3">
+    <h3>Edit a User</h3>
 
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('users.partials.delete-user-form')
-                </div>
-            </div>
-        </div>
+    {{-- Display error messages if they exist --}}
+    @if ($errors->any())
+    <div class="toast toast-error">
+        @foreach ($errors->all() as $error)
+            <span>{{$error}}</span><br />
+        @endforeach
     </div>
-</x-app-layout>
+    @endif
+
+    <form method="POST" action="{{route('users.update', $user->id)}}">
+        @csrf
+        @method('PUT')
+
+        {{-- Data-entry Fields --}}
+        <div class="form-group">
+            @include('users.form')
+        </div>
+
+        {{-- Buttons to store data, or cancel and return to index --}}
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Save User</button>
+            <a href="{{route('users.index')}}">Cancel</a>
+        </div>
+    </form>
+</div>
+@endsection
