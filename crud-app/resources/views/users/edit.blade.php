@@ -19,7 +19,7 @@
 
         {{-- Data-entry Fields --}}
         <div class="form-group">
-            @include('users.form')
+            @include('users.updateform')
         </div>
 
         {{-- Buttons to store data, or cancel and return to index --}}
