@@ -11,16 +11,13 @@
   <div class="form-group">
     
     {{-- Product_ID (Hidden) --}}
-    <label class="form-label" for="product_id" hidden>Product ID</label>
     <input type="number" name="product_id" class="form-control" value="{{$product->id}}" hidden />
 
     {{-- User_ID (Hidden) --}}
-    <label class="form-label" for="product_id" hidden>User ID</label>
     <input type="number" name="user_id" class="form-control" value="{{Auth::user()->id}}" hidden />
 
     {{-- User Name (Hidden) --}}
-    <label class="form-label" for="name" hidden>User Name</label>
-    <input type="number" name="name" class="form-control" value="{{Auth::user()->name}}" hidden />
+    <input type="text" name="name" class="form-control" value="{{Auth::user()->name}}" hidden />
 
     {{-- Rating --}}
     <label for="rating">Your Rating</label>
@@ -28,7 +25,7 @@
       <option selected>Rate this Product</option>
         @forEach ( range(1,5) as $ratingSelected )
           <option value="{{ $ratingSelected }}">{{ $ratingSelected }}&starf;</option>
-          @endForEach
+        @endForEach
     </select>
         
     {{-- Comments --}}
