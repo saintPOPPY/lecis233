@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReviewController;
-use App\Http\Controllers\CrudUserController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +24,7 @@ Route::get('/', function () {
 
 Route::resource('products', ProductController::class)->middleware('auth');
 Route::resource('reviews', ReviewController::class);
-Route::resource('users', CrudUserController::class)->middleware('auth');
+Route::resource('users', UserController::class)->middleware('auth');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

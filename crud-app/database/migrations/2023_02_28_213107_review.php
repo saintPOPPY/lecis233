@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->text('comment')->nullable();
             $table->integer('rating');
-            $table->integer('product_id')->index();
             $table->timestamps();
         });
     }

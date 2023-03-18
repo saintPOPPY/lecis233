@@ -15,7 +15,7 @@ use Illuminate\Auth\Events\Registered;
 
 use \App\Models\User;
 
-class CrudUserController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -38,7 +38,7 @@ class CrudUserController extends Controller
         }
 
         $user = new User;
-        return response(view('users.create', ['user' => $user]));
+        return response(view('users.create', ['user' => $user])->with('success', 'User was created'));
     }
 
     /**

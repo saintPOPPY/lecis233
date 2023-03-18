@@ -67,7 +67,7 @@
               @endfor
             </td>
             <td>{{ $review->comment }}</td>
-            <td>{{ $review->name }}</td>
+            <td>{{ $review->user->name }}</td>
 
             @can('viewAny', App\Models\Review::class)
             <td>
